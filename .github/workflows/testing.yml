@@ -29,6 +29,10 @@ jobs:
       - name: Run tests with maven
         run: mvn clean test
 
-      #Publish unit tests
+      #Publish tests reports
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1.6
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: target/surefire-reports/**/*.xml
