@@ -9,21 +9,20 @@ internal class PasswordsTest {
 
     @Test
     fun passwordWhichRespectItsPolicyIsValid() {
-        assertThatPassword(Password().fromInput("1-3 a: abcde"))
-                .isEqualToComparingFieldByFieldRecursively(Password("abcde").withPolicy("1-3", "a"))
+        assertThatPassword(Password.fromInput("1-3 a: abcde"))
+                .isEqualToComparingFieldByFieldRecursively(Password("abcde").withSledRentalPolicy("1-3", "a"))
                 .isValid()
-        assertThatPassword(Password().fromInput("2-9 c: ccccccccc"))
-                .isEqualToComparingFieldByFieldRecursively(Password("ccccccccc").withPolicy("2-9", "c"))
+        assertThatPassword(Password.fromInput("2-9 c: ccccccccc"))
+                .isEqualToComparingFieldByFieldRecursively(Password("ccccccccc").withSledRentalPolicy("2-9", "c"))
                 .isValid()
     }
 
     @Test
     fun passwordWhichDoesNotRespectItsPolicyIsInvalid() {
-        assertThatPassword(Password().fromInput("1-3 b: cdefg"))
-                .isEqualToComparingFieldByFieldRecursively(Password("cdefg").withPolicy("1-3", "b"))
+        assertThatPassword(Password.fromInput("1-3 b: cdefg"))
+                .isEqualToComparingFieldByFieldRecursively(Password("cdefg").withSledRentalPolicy("1-3", "b"))
                 .isInValid()
     }
-
 
     @Test
     fun allValidPasswordsCanBeFound() {
@@ -31,7 +30,9 @@ internal class PasswordsTest {
         assertThat(Passwords(passwordsAsString).findAllValid())
                 .hasSize(2)
                 .usingRecursiveFieldByFieldElementComparator()
-                .containsOnly(Password().fromInput("1-3 a: abcde"), Password().fromInput("2-9 c: ccccccccc"))
+                .containsOnly(
+                        Password.fromInput("1-3 a: abcde"),
+                        Password.fromInput("2-9 c: ccccccccc"))
     }
 
 }
