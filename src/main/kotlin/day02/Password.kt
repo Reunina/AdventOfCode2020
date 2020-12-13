@@ -6,14 +6,14 @@ class Password(private val password: String, private val policy: Policy) {
     constructor(password: String) : this(password, NeutralPolicy())
 
     companion object {
-        fun fromInput(passwordAndPolicy: String) : Password {
+        fun fromInput(policy : (String) -> Policy, passwordAndPolicy: String) : Password {
             val split = passwordAndPolicy.split(":")
-           return Password(split[1].trim(), SledRentalPolicy.fromInput(split[0]))
+           return Password(split[1].trim(), policy.invoke(split[0]))
         }
     }
 
-    fun withSledRentalPolicy(count: String, letter: String): Password {
-        return Password(password, SledRentalPolicy(count, letter))
+    fun withPolicy(policy : (String) -> Policy , policyAsString: String): Password {
+        return Password(password, policy.invoke(policyAsString))
     }
 
     fun isValid(): Boolean {
