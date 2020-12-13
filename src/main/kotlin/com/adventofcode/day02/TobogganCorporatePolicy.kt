@@ -1,4 +1,4 @@
-package day02
+package com.adventofcode.day02
 
 class TobogganCorporatePolicy(positions: String, private val letter: String) : Policy {
 
