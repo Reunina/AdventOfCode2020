@@ -3,9 +3,9 @@ import com.adventofcode.day02.SledRentalPolicy
 import com.adventofcode.day02.TobogganCorporatePolicy
 import java.io.File
 
-fun main(args: Array<String>) {
+fun main() {
     val input: List<String> =
-            File("src/main/resources/com.adventofcode.day02/passwords_and_associated_corporate_policy.txt")
+            File("src/main/resources/day02/passwords_and_associated_corporate_policy.txt")
                     .readLines()
 
     val allValidPasswordsForSledRentalPolicy =

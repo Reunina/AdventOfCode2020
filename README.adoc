@@ -6,14 +6,16 @@ These are solutions for a serie aof puzzles you can find here:
 
 == Running solutions
 
-for each day you will find a dedicated package. ( e.g package `day01` dor the puzzles of the first day).
-Each will contain a `.kt` file with a `main` function.
+for each day you will find a dedicated package. ( e.g package `day01` for the puzzles of the first day).
+Each will contain a `.kt` file with a `main` function ( `Day01.kt` for day01 puzzles, `Day02.kt` for day02 puzzles, etc.. )
 
-Run this with you prefered java tool or command line.
+Run this with you preferred java tool or command line.
 
 == Github ci
 
 A each push or pull request at the `main` branch the `github/workflows/testing.yml` is launch.
+
+=== Running and publishing unit tests
 
 Unit tests are executed by maven and then published. When you are working on a pull request, results can be show as follow:
 
@@ -24,3 +26,15 @@ image::src/docs/image/publish_failling_tests.png[publishing failling tests]
 .Example of publishing successful tests on a PR.
 [caption=""]
 image::src/docs/image/publish_successful_tests.png[publishing successful tests]
+
+
+=== Running and archiving mutation tests
+
+Using https://pitest.org/about/[PIT library] for running some mutation tests.
+
+The results are archived as artifact in the action panel:
+
+.Example of archiving mutation tests results.
+[caption=""]
+image::src/docs/image/archiving_mutation_tests_results.png[archiving mutation tests results]
+

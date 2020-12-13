@@ -1,14 +1,12 @@
 package com.adventofcode.day01
 
-import java.io.File
-
 class EntryCode(val firstEntry: Int, val secondEntry: Int, val thirdEntry: Int) {
 
     private val code: Int = firstEntry * secondEntry * thirdEntry
 
 
-    constructor() : this(0, 0,0)
-    constructor(firstEntry: Int, secondEntry: Int) : this(firstEntry,secondEntry,1)
+    constructor() : this(0, 0, 0)
+    constructor(firstEntry: Int, secondEntry: Int) : this(firstEntry, secondEntry, 1)
 
     private val EXPECTED_SUM = 2020
 
@@ -28,7 +26,7 @@ class EntryCode(val firstEntry: Int, val secondEntry: Int, val thirdEntry: Int) 
     }
 
     private fun findTwoOtherEntriesThatSumUpTo2020With(firstEntry: Int, input: List<Int>): Set<Int> {
-        return input.associateWith { EXPECTED_SUM - (firstEntry + it)  }
+        return input.associateWith { EXPECTED_SUM - (firstEntry + it) }
                 .filterValues { input.contains(it) }
                 .keys
     }
@@ -49,8 +47,3 @@ class EntryCode(val firstEntry: Int, val secondEntry: Int, val thirdEntry: Int) 
 }
 
 
-fun main(args: Array<String>) {
-    val input: List<Int> = File("src/main/resources/com.adventofcode.day01/puzzle_input_for_entry.txt").readLines().map(String::toInt)
-    println("Code to enter Advent Of Code 2020:       " + EntryCode().findFromTwoEntriesOf(input))
-    println("Code to continue on Advent Of Code 2020: " + EntryCode().findFromThreeEntriesOf(input))
-}
