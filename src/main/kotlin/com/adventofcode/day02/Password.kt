@@ -1,4 +1,4 @@
-package day02
+package com.adventofcode.day02
 
 
 class Password(private val password: String, private val policy: Policy) {

@@ -1,4 +1,4 @@
-package day01
+package com.adventofcode.day01
 
 import java.io.File
 
@@ -50,7 +50,7 @@ class EntryCode(val firstEntry: Int, val secondEntry: Int, val thirdEntry: Int) 
 
 
 fun main(args: Array<String>) {
-    val input: List<Int> = File("src/main/resources/day01/puzzle_input_for_entry.txt").readLines().map(String::toInt)
+    val input: List<Int> = File("src/main/resources/com.adventofcode.day01/puzzle_input_for_entry.txt").readLines().map(String::toInt)
     println("Code to enter Advent Of Code 2020:       " + EntryCode().findFromTwoEntriesOf(input))
     println("Code to continue on Advent Of Code 2020: " + EntryCode().findFromThreeEntriesOf(input))
 }

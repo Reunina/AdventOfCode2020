@@ -1,6 +1,6 @@
-package day02
+package com.adventofcode.day02
 
-import day02.PasswordAssert.Companion.assertThatPassword
+import com.adventofcode.day02.PasswordAssert.Companion.assertThatPassword
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
