@@ -11,26 +11,23 @@ internal class PasswordsWithSledRentalPolicyTest {
 
     @Test
     fun passwordWhichRespectItsPolicyIsValid() {
-        assertThatPassword(Password.fromInput(sledRentalPolicyFromInput,"1-3 a: abcde"))
+        assertThatPassword(Password.fromInput(sledRentalPolicyFromInput, "1-3 a: abcde"))
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("abcde")
-                                .withPolicy(sledRentalPolicyFromInput, "1-3 a")
+                        Password("abcde", sledRentalPolicyFromInput("1-3 a"))
                 )
                 .isValid()
-        assertThatPassword(Password.fromInput(sledRentalPolicyFromInput,"2-9 c: ccccccccc"))
+        assertThatPassword(Password.fromInput(sledRentalPolicyFromInput, "2-9 c: ccccccccc"))
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("ccccccccc")
-                                .withPolicy(sledRentalPolicyFromInput, "2-9 c")
+                        Password("ccccccccc", sledRentalPolicyFromInput("2-9 c"))
                 )
                 .isValid()
     }
 
     @Test
     fun passwordWhichDoesNotRespectItsPolicyIsInvalid() {
-        assertThatPassword(Password.fromInput(sledRentalPolicyFromInput,"1-3 b: cdefg"))
+        assertThatPassword(Password.fromInput(sledRentalPolicyFromInput, "1-3 b: cdefg"))
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("cdefg")
-                                .withPolicy(sledRentalPolicyFromInput, "1-3 b")
+                        Password("cdefg", sledRentalPolicyFromInput("1-3 b"))
                 )
                 .isInValid()
     }
@@ -42,8 +39,8 @@ internal class PasswordsWithSledRentalPolicyTest {
                 .hasSize(2)
                 .usingRecursiveFieldByFieldElementComparator()
                 .containsOnly(
-                        Password.fromInput(sledRentalPolicyFromInput,"1-3 a: abcde"),
-                        Password.fromInput(sledRentalPolicyFromInput,"2-9 c: ccccccccc"))
+                        Password.fromInput(sledRentalPolicyFromInput, "1-3 a: abcde"),
+                        Password.fromInput(sledRentalPolicyFromInput, "2-9 c: ccccccccc"))
     }
 
 }

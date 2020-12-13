@@ -13,26 +13,21 @@ class TobogganCorporatePolicy(positions: String, private val letter: String) : P
         }
     }
 
-    override fun checkValidity(password: String): Boolean {
-        return letterFoundInFirstPositionAndNotInSecondPosition(password)
-                || letterFoundInSecondPositionAndNotInFirstPosition(password)
-            }
-
-    private fun letterFoundInFirstPositionAndNotInSecondPosition(password: String) =
-            (password.getOrNull(firstPosition - 1).toString() == letter
-                    && password.getOrNull(secondPosition - 1).toString() != letter)
-
-    private fun letterFoundInSecondPositionAndNotInFirstPosition(password: String) =
-            (password.getOrNull(firstPosition - 1).toString() != letter
-                    && password.getOrNull(secondPosition - 1).toString() == letter)
-
     override fun toString(): String {
         return "Toboggan Corporate policy: -letter '$letter' must be at '$firstPosition' and not at '$secondPosition'-"
     }
-}
 
-/*
-1-3 a: abcde is valid: position 1 contains a and position 3 does not.
-1-3 b: cdefg is invalid: neither position 1 nor position 3 contains b.
-2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
- */
+    override fun checkValidity(password: String): Boolean {
+        return letterIsAtFirstPositionAndNotAtSecondPosition(password)
+                || letterISAtSecondPositionAndNotAtInFirstPosition(password)
+            }
+
+    private fun letterIsAtFirstPositionAndNotAtSecondPosition(password: String) =
+            (password.getOrNull(firstPosition - 1).toString() == letter
+                    && password.getOrNull(secondPosition - 1).toString() != letter)
+
+    private fun letterISAtSecondPositionAndNotAtInFirstPosition(password: String) =
+            (password.getOrNull(firstPosition - 1).toString() != letter
+                    && password.getOrNull(secondPosition - 1).toString() == letter)
+
+}

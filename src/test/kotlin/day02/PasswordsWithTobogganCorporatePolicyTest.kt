@@ -11,8 +11,7 @@ internal class PasswordsWithTobogganCorporatePolicyTest {
     fun passwordIsInvalidWhenBothPositionsContainTheKeyLetter() {
         PasswordAssert.assertThatPassword(Password.fromInput(tobogganPolicyFromInput,"2-9 c: ccccccccc"))
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("ccccccccc")
-                                .withPolicy(tobogganPolicyFromInput, "2-9 c")
+                        Password("ccccccccc", tobogganPolicyFromInput("2-9 c"))
                 )
                 .isInValid()
     }
@@ -21,8 +20,7 @@ internal class PasswordsWithTobogganCorporatePolicyTest {
     fun passwordIsInvalidWhenNeitherPositionsContainTheKeyLetter() {
         PasswordAssert.assertThatPassword(Password.fromInput(tobogganPolicyFromInput,"1-3 b: cdefg"))
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("cdefg")
-                                .withPolicy(tobogganPolicyFromInput, "1-3 b")
+                        Password("cdefg", tobogganPolicyFromInput("1-3 b"))
                 )
                 .isInValid()
     }
@@ -32,16 +30,14 @@ internal class PasswordsWithTobogganCorporatePolicyTest {
         PasswordAssert.assertThatPassword(Password.fromInput(tobogganPolicyFromInput,"1-3 a: abcde"))
                 .`as`("1-3 a: abcde must be valid: position 1 contains a and position 3 does not.")
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("abcde")
-                                .withPolicy(tobogganPolicyFromInput, "1-3 a")
+                        Password("abcde", tobogganPolicyFromInput( "1-3 a"))
                 )
                 .isValid()
 
         PasswordAssert.assertThatPassword(Password.fromInput(tobogganPolicyFromInput,"1-3 a: xbade"))
                 .`as`("1-3 a: xbade must be valid: position 3 contains a and position 1 does not.")
                 .isEqualToComparingFieldByFieldRecursively(
-                        Password("xbade")
-                                .withPolicy(tobogganPolicyFromInput, "1-3 a")
+                        Password("xbade", tobogganPolicyFromInput( "1-3 a"))
                 )
                 .isValid()
     }
@@ -59,8 +55,3 @@ internal class PasswordsWithTobogganCorporatePolicyTest {
     }
 
 }
-/*
-1-3 a: abcde is valid: position 1 contains a and position 3 does not.
-1-3 b: cdefg is invalid: neither position 1 nor position 3 contains b.
-2-9 c: ccccccccc is invalid: both position 2 and position 9 contain c.
-*/

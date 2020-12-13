@@ -14,8 +14,7 @@ class SledRentalPolicy(private val expectedCount: String, private val letter: St
     }
 
     override fun checkValidity(password: String): Boolean {
-        val count = countValidLetterOf(password)
-        return isLetterCountValid(count)
+        return isLetterCountValid(countValidLetterOf(password))
     }
 
     private fun countValidLetterOf(password: String): Int {
