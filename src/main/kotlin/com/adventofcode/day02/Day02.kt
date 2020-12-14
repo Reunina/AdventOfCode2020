@@ -1,6 +1,5 @@
-import com.adventofcode.day02.Passwords
-import com.adventofcode.day02.SledRentalPolicy
-import com.adventofcode.day02.TobogganCorporatePolicy
+package com.adventofcode.day02
+
 import java.io.File
 
 fun main() {
@@ -26,9 +25,9 @@ fun main() {
     )
 
     println("see details below:\n"
-            +"__ with Sled Rental Policy__ \n"
+            + "__ with Sled Rental Policy__ \n"
             + allValidPasswordsForSledRentalPolicy.joinToString("\n")
-            +"__ with Toboggan Corpporate Policy__ \n"
+            + "__ with Toboggan Corpporate Policy__ \n"
             + allValidPasswordsForTobogganCorporatePolicy.joinToString("\n")
     )
 }
