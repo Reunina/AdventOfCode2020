@@ -60,12 +60,16 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.6.1</version>
                 <configuration>
+                    <verbose>true</verbose>
                     <targetClasses>
                         <param>com.adventofcode*</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.adventofcode*</param>
                     </targetTests>
+                    <excludedClasses>
+                        <param>com.adventofcode.day*.Day*Kt</param>
+                    </excludedClasses>
                     <exportLineCoverage>true</exportLineCoverage>
                 </configuration>
                 <dependencies>
