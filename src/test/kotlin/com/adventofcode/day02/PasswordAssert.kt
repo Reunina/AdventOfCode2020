@@ -12,14 +12,14 @@ class PasswordAssert(value: Password) : AbstractObjectAssert<PasswordAssert, Pas
 
     fun isInValid(): PasswordAssert {
         if (actual.isValid()) {
-        failWithMessage("Actual value <%s> is not an invalid password", actual)
+            failWithMessage("Actual value <%s> is not an invalid password", actual)
+        }
+        return this
     }
-    return this
-}
 
-companion object {
-    fun assertThatPassword(value: Password): PasswordAssert {
-        return PasswordAssert(value)
+    companion object {
+        fun assertThatPassword(value: Password): PasswordAssert {
+            return PasswordAssert(value)
+        }
     }
-}
 }
