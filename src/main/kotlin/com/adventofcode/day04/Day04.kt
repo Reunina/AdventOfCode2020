@@ -9,7 +9,14 @@ fun main() {
 
     println("Day 04 , first input : ")
 
-    println(PassportScanner.readPassportsFrom(input).validateAllPassports())
+    println(PassportScanner.readPassportsFrom(input).simplyValidateAllPassports())
+
+
+    println("Day 04 , second input : ")
+
+    println(PassportScanner.readPassportsFrom(input).fullyValidateAllPassports())
+
+
 
 }
  

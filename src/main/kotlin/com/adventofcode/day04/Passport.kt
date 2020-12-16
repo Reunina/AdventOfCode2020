@@ -1,14 +1,9 @@
 package com.adventofcode.day04
 
-class Passport(
-        private val data: Map<DataField, String>
-) {
-    fun containsAllDataField(values: Collection<DataField>): Boolean {
-        return values.all { data.keys.contains(it) }
-    }
+class Passport(internal val data: Map<DataField, String>) {
 
     override fun toString(): String {
-        return "Passport($data)"
+        return "Passport(${data.toSortedMap()})"
     }
 
     override fun equals(other: Any?): Boolean {

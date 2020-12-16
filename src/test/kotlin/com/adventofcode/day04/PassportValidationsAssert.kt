@@ -2,28 +2,26 @@ package com.adventofcode.day04
 
 import org.assertj.core.api.AbstractObjectAssert
 
-class PassportsValidationAssert(value: PassportsValidation) : AbstractObjectAssert<PassportsValidationAssert,
-        PassportsValidation>(value, PassportsValidationAssert::class.java) {
+class PassportsValidatorAssert(value: PassportsValidator) : AbstractObjectAssert<PassportsValidatorAssert,
+        PassportsValidator>(value, PassportsValidatorAssert::class.java) {
 
-    fun onlyContainsValidPassports(): PassportsValidationAssert {
+    fun onlyContainsValidPassports(): PassportsValidatorAssert {
         if ( ! actual.areAllPassportsValidOnes()) {
-             failWithMessage("%nExpecting %n<%s>%nto have all passports valid", actual)
-
+             failWithMessage("%nExpecting %n<%s>%nto have all passports valid %nBut some are not:%n<%s>", actual.validationData, actual.invalidityCause)
         }
         return this
     }
 
-    fun onlyContainsInvalidPassports() : PassportsValidationAssert{
+    fun onlyContainsInvalidPassports() : PassportsValidatorAssert{
         if ( actual.areAllPassportsValidOnes()) {
             failWithMessage("%nExpecting %n<%s>%nto have all passports invalid", actual)
-
         }
         return this
     }
 
     companion object {
-        fun assertThatPassportValidation(value: PassportsValidation): PassportsValidationAssert {
-            return PassportsValidationAssert(value)
+        fun assertThatPassportValidator(value: PassportsValidator): PassportsValidatorAssert {
+            return PassportsValidatorAssert(value)
         }
     }
 

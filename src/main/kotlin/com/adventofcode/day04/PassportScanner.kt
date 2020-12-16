@@ -2,14 +2,13 @@ package com.adventofcode.day04
 
 class PassportScanner(val passports: List<Passport>) {
 
-    private val EXPECCTED_VALUES: Collection<DataField> = DataField.values().filter { it != DataField.CID }
 
-    private fun validatePassport(passport: Passport): Boolean {
-        return passport.containsAllDataField(EXPECCTED_VALUES)
+    fun simplyValidateAllPassports(): PassportsValidator {
+        return SimplePassportsValidator(passports)
     }
 
-    fun validateAllPassports(): PassportsValidation {
-        return PassportsValidation(passports.map { it to validatePassport(it) })
+    fun fullyValidateAllPassports(): PassportsValidator {
+        return FullPassportsValidator(passports)
     }
 
     companion object {
