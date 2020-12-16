@@ -67,7 +67,7 @@ class PassportScannerWithFullValidationTest {
                             PassportScanner
                                     .readPassportFrom(
                                             "eyr:1972 cid:100\n" +
-                                            "hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926")
+                                                    "hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926")
                                     .fullyValidateAllPassports()
                     )
                             .onlyContainsInvalidPassports()
@@ -75,7 +75,7 @@ class PassportScannerWithFullValidationTest {
                 {
                     PassportsValidatorAssert.assertThatPassportValidator(
                             PassportScanner
-                                    .readPassportFrom( "hcl:dab227 iyr:2012\n" +
+                                    .readPassportFrom("hcl:dab227 iyr:2012\n" +
                                             "ecl:brn hgt:182cm pid:021572410 eyr:2020 byr:1992 cid:277")
                                     .fullyValidateAllPassports()
                     )
@@ -105,7 +105,51 @@ class PassportScannerWithFullValidationTest {
 
     }
 
+
+    @Test
+    fun shouldDisplayNumberOfValidData() {
+        val passport01 = "pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980\n" +
+                "hcl:#623a2f"
+        val passport02 = "ecl:gry"
+        val input = "$passport01\n\n$passport02"
+
+        PassportsValidatorAssert.assertThatPassportValidator(
+                PassportScanner
+                        .readPassportsFrom(input)
+                        .fullyValidateAllPassports()
+        )
+                .onlyContainsInvalidPassports()
+                .displaysNumberOfValidatedDataFoundAs("FullPassportsValidator: 1 data(s) validated among:")
+    }
+
+    @Test
+    fun shouldGiveInvalidityCauseWhenPassportIsInvalid() {
+        assertAll(
+                "Invalidity cause should be given when invalidating passport",
+                {
+                    assertInvalidityCause(
+                            "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884",
+                            "Missing some data = [BYR ('Birth Year'), HGT ('Height'), HCL ('Hair Color')]")
+                },
+                {
+                    assertInvalidityCause(
+                            "ecl:gry pid:860033327 eyr:2020 hcl:#fgfffd byr:1937 iyr:2017 cid:147 hgt:1383cm",
+                            "Found invalid data: {HCL ('Hair Color')=#fgfffd, HGT ('Height')=1383cm}")
+                }
+        )
+    }
+
+    private fun assertInvalidityCause(input: String, cause: String) {
+        PassportsValidatorAssert.assertThatPassportValidator(
+                PassportScanner
+                        .readPassportFrom(input)
+                        .fullyValidateAllPassports()
+        )
+                .displayInvalidityCauseAs(cause)
+    }
+
 }
+
 
 
 

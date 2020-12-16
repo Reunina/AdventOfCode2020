@@ -20,9 +20,12 @@ class FullPassportsValidator(passports: Collection<Passport>) : PassportsValidat
 
     }
 
+    override val validData: Collection<Pair<Passport, Boolean>> = validationData.filter { it.second }
+
     override fun toString(): String {
-        return "FullPassportsValidator: ${validationData.count { it.second }} passport(s) validated.\n\n${validationData.joinToString("\n")}"
-    }
+        return asString()  }
+
+
 
 
 }

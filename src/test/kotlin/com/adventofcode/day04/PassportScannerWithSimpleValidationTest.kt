@@ -45,4 +45,33 @@ class PassportScannerWithSimpleValidationTest {
 
     }
 
+
+    @Test
+    fun shouldDisplayNumberOfValidData() {
+        val passport01 = "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884\n" +
+                "hcl:#cfa07d byr:1929"
+        val passport02 = "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd byr:1937 iyr:2017 cid:147 hgt:183cm\""
+        val input = "$passport01\n\n$passport02"
+
+        PassportsValidatorAssert.assertThatPassportValidator(
+                PassportScanner
+                        .readPassportsFrom(input)
+                        .simplyValidateAllPassports()
+        )
+                .onlyContainsInvalidPassports()
+                .displaysNumberOfValidatedDataFoundAs("SimplePassportsValidator: 1 data(s) validated among:")
+    }
+
+    @Test
+    fun shouldGiveInvalidityCauseWhenPassportIsInvalid() {
+
+        PassportsValidatorAssert.assertThatPassportValidator(
+                PassportScanner
+                        .readPassportFrom("iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884")
+                        .simplyValidateAllPassports()
+        )
+                .displayInvalidityCauseAs("Missing some data = [BYR ('Birth Year'), HGT ('Height'), HCL ('Hair Color')]")
+    }
+
 }
+
