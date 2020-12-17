@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>SimplePassportsValidator.kt</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.adventofcode.day04</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_3'/>
+3
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_3'>6</a>
+<span>
+1. areAllPassportsValidOnes : replaced boolean return with false for com/adventofcode/day04/SimplePassportsValidator::areAllPassportsValidOnes &rarr; KILLED<br/>
+2. areAllPassportsValidOnes : replaced boolean return with true for com/adventofcode/day04/SimplePassportsValidator::areAllPassportsValidOnes &rarr; KILLED<br/>
+3. asString : replaced return value with &#34;&#34; for com/adventofcode/day04/SimplePassportsValidator::asString &rarr; KILLED<br/>
+4. validateAll : replaced return value with Collections.emptyList for com/adventofcode/day04/SimplePassportsValidator::validateAll &rarr; KILLED<br/>
+5. validatePassport : replaced boolean return with false for com/adventofcode/day04/SimplePassportsValidator::validatePassport &rarr; KILLED<br/>
+6. validatePassport : replaced boolean return with true for com/adventofcode/day04/SimplePassportsValidator::validatePassport &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>class SimplePassportsValidator(passports: Collection&#60;Passport&#62;) : PassportsValidator {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_5'/>
+5
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_5'>1</a>
+<span>
+1. getInvalidityCause : replaced return value with &#34;&#34; for com/adventofcode/day04/SimplePassportsValidator::getInvalidityCause &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    override var invalidityCause: String = &#34;Missing some field&#34;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_6'/>
+6
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_6'>1</a>
+<span>
+1. getValidationData : replaced return value with Collections.emptyList for com/adventofcode/day04/SimplePassportsValidator::getValidationData &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    override val validationData: Collection&#60;Pair&#60;Passport, Boolean&#62;&#62; = validateAll(passports)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    override fun toString(): String {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_9'/>
+9
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_9'>1</a>
+<span>
+1. toString : replaced return value with &#34;&#34; for com/adventofcode/day04/SimplePassportsValidator::toString &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return asString()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@35d3202b_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@35d3202b_3'>3</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_3'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>areAllPassportsValidOnes<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldValidatePassportWhenDataHasAllFieldsCompleted()]</span></span> replaced boolean return with false for com/adventofcode/day04/SimplePassportsValidator::areAllPassportsValidOnes &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>areAllPassportsValidOnes<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldInvalidatePassportWhenSomeDataIsMissing()]</span></span> replaced boolean return with true for com/adventofcode/day04/SimplePassportsValidator::areAllPassportsValidOnes &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>asString<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldDisplayNumberOfValidData()]</span></span> replaced return value with &#34;&#34; for com/adventofcode/day04/SimplePassportsValidator::asString &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>validateAll<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldInvalidatePassportWhenSomeDataIsMissing()]</span></span> replaced return value with Collections.emptyList for com/adventofcode/day04/SimplePassportsValidator::validateAll &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>validatePassport<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldValidatePassportWhenDataHasAllFieldsCompleted()]</span></span> replaced boolean return with false for com/adventofcode/day04/SimplePassportsValidator::validatePassport &rarr; KILLED</p> <p class='KILLED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>validatePassport<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldInvalidatePassportWhenSomeDataIsMissing()]</span></span> replaced boolean return with true for com/adventofcode/day04/SimplePassportsValidator::validatePassport &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@35d3202b_5'>5</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_5'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getInvalidityCause<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldGiveInvalidityCauseWhenPassportIsInvalid()]</span></span> replaced return value with &#34;&#34; for com/adventofcode/day04/SimplePassportsValidator::getInvalidityCause &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@35d3202b_6'>6</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_6'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getValidationData<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldInvalidatePassportWhenSomeDataIsMissing()]</span></span> replaced return value with Collections.emptyList for com/adventofcode/day04/SimplePassportsValidator::getValidationData &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@35d3202b_9'>9</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@35d3202b_9'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>toString<br/><b>Killed by : </b>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldDisplayNumberOfValidData()]</span></span> replaced return value with &#34;&#34; for com/adventofcode/day04/SimplePassportsValidator::toString &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>NULL_RETURN_VALUES</li>
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldDisplayNumberOfValidData()] (4 ms)</li><li>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldInvalidatePassportWhenSomeDataIsMissing()] (2 ms)</li><li>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldValidatePassportWhenDataHasAllFieldsCompletedButCID()] (5 ms)</li><li>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldValidatePassportWhenDataHasAllFieldsCompleted()] (4 ms)</li><li>com.adventofcode.day04.PassportScannerWithSimpleValidationTest.[engine:junit-jupiter]/[class:com.adventofcode.day04.PassportScannerWithSimpleValidationTest]/[method:shouldGiveInvalidityCauseWhenPassportIsInvalid()] (4 ms)</li><li>com.adventofcode.day01.EntryTest.[engine:junit-jupiter]/[class:com.adventofcode.day01.EntryTest]/[method:shouldFindTheContinuationCode()] (8 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.6.1
+
+</body>
+</html>
