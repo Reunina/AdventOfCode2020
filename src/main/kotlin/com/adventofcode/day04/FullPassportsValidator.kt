@@ -1,14 +1,13 @@
 package com.adventofcode.day04
 
 class FullPassportsValidator(passports: Collection<Passport>) : PassportsValidator {
-    override var invalidityCause: String = ""
 
-    override val validationData: Collection<Pair<Passport, Boolean>> =
-            passports.map { it to validatePassport(it) }
+    override var invalidityCause = ""
+    override val validationData = validateAll(passports)
 
     override fun validatePassport(passport: Passport): Boolean {
 
-        val invalidData = passport.data.filter { !it.key.validate(it.value) }
+        val invalidData = passport.data.filter { !it.key.validate(it.value) }.toMap()
         val allValid = invalidData.isEmpty()
         return when {
             allValid -> super.validatePassport(passport)
@@ -20,12 +19,7 @@ class FullPassportsValidator(passports: Collection<Passport>) : PassportsValidat
 
     }
 
-    override val validData: Collection<Pair<Passport, Boolean>> = validationData.filter { it.second }
-
     override fun toString(): String {
-        return asString()  }
-
-
-
-
+        return asString()
+    }
 }

@@ -18,6 +18,15 @@ class PassportScannerTest {
             Pair(DataField.CID, "147"),
             Pair(DataField.HGT, "183cm")
     ))
+    private val passport02 = Passport(mapOf(
+            Pair(DataField.IYR, "2013"),
+            Pair(DataField.ECL, "amb"),
+            Pair(DataField.CID, "350"),
+            Pair(DataField.EYR, "2023"),
+            Pair(DataField.PID, "028048884"),
+            Pair(DataField.HCL, "#cfa07d"),
+            Pair(DataField.BYR, "1929")
+    ))
 
     @Test
     fun shouldReadPassportFromSimpleRawData() {
@@ -43,27 +52,17 @@ class PassportScannerTest {
     @Test
     fun shouldReadMultiplePassortsFromRawData() {
         val input = "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n" +
-                "byr:1937 iyr:2017 cid:147 hgt:183cm\n" +
+                "byr:1937 iyr:2017 cid:147 hgt:183cm" +
+                "\n" +
                 "\n" +
                 "iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884\n" +
                 "hcl:#cfa07d byr:1929"
 
-        val expectedPassports = listOf<Passport>(
-                passport01
-                ,
-                Passport(mapOf(
-                        Pair(DataField.IYR, "2013"),
-                        Pair(DataField.ECL, "amb"),
-                        Pair(DataField.CID, "350"),
-                        Pair(DataField.EYR, "2023"),
-                        Pair(DataField.PID, "028048884"),
-                        Pair(DataField.HCL, "#cfa07d"),
-                        Pair(DataField.BYR, "1929")
-                )
-                ))
+        val expectedPassports = listOf(passport01, passport02)
 
-        assertThat(PassportScanner.readPassportsFrom(input))
-                .hasFieldOrPropertyWithValue("passports", expectedPassports)
+
+        assertThatPassportScanner(PassportScanner.readPassportsFrom(input))
+                .hasReadThesePassports(expectedPassports)
 
     }
 

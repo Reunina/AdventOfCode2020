@@ -8,7 +8,7 @@ class PassportsValidatorAssert(value: PassportsValidator) : AbstractObjectAssert
 
     fun onlyContainsValidPassports(): PassportsValidatorAssert {
         if (!actual.areAllPassportsValidOnes()) {
-            failWithMessage("%nExpecting %n<%s>%nto have all passports valid %nBut some are not:%n<%s>", actual.validationData, actual.invalidityCause)
+            failWithMessage("%nExpecting %n<%s>%nto have all passports valid %nBut some are not.", actual.validationData)
         }
         return this
     }

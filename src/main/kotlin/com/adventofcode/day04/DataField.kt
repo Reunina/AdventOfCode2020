@@ -1,6 +1,6 @@
 package com.adventofcode.day04
 
-enum class DataField(val label: String) {
+enum class DataField(private val label: String) {
 
     BYR("Birth Year") {
         override fun validate(value: String): Boolean = isInRange(1920, 2002, value)

@@ -119,7 +119,7 @@ class PassportScannerWithFullValidationTest {
                         .fullyValidateAllPassports()
         )
                 .onlyContainsInvalidPassports()
-                .displaysNumberOfValidatedDataFoundAs("FullPassportsValidator: 1 data(s) validated among:")
+                .displaysNumberOfValidatedDataFoundAs("FullPassportsValidator: 2 data(s) validated among:")
     }
 
     @Test

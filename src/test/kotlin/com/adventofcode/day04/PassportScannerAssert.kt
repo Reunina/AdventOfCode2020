@@ -1,15 +1,22 @@
 package com.adventofcode.day04
 
 import org.assertj.core.api.AbstractObjectAssert
+import org.assertj.core.api.Assertions.assertThat
 
 class PassportScannerAssert(value: PassportScanner) : AbstractObjectAssert<PassportScannerAssert,
         PassportScanner>(value, PassportScannerAssert::class.java) {
 
     fun hasReadThisPassport(expectedPassport: Passport): PassportScannerAssert {
-        if ( ! actual.passports.contains(expectedPassport)) {
-             failWithMessage("%nExpecting <%s> to have read:%n  <%s>%nbut was not found in:%n  <%s>", actual, expectedPassport, actual.passports)
+        assertThat(actual.passports)
+                .usingRecursiveFieldByFieldElementComparator()
+                .contains(expectedPassport)
+        return this
+    }
 
-        }
+    fun hasReadThesePassports(expectedPassports: List<Passport>): PassportScannerAssert {
+        assertThat(actual.passports)
+                .usingRecursiveFieldByFieldElementComparator()
+                .containsAll(expectedPassports)
         return this
     }
 

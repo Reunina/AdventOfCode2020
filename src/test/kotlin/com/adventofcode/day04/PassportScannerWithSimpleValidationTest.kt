@@ -59,7 +59,7 @@ class PassportScannerWithSimpleValidationTest {
                         .simplyValidateAllPassports()
         )
                 .onlyContainsInvalidPassports()
-                .displaysNumberOfValidatedDataFoundAs("SimplePassportsValidator: 1 data(s) validated among:")
+                .displaysNumberOfValidatedDataFoundAs("SimplePassportsValidator: 2 data(s) validated among:")
     }
 
     @Test
