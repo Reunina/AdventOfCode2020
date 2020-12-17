@@ -50,3 +50,9 @@ jobs:
         with:
           name: mutation_testing_results
           path: target/pit-reports/
+
+      - name: Publish mutation testing results to github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/pit-reports/*/
