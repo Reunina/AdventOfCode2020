@@ -89,7 +89,6 @@
                     <exportLineCoverage>true</exportLineCoverage>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
     <dependencies>
