@@ -1,38 +1,47 @@
 package com.adventofcode.day05
 
-class SeatDecoder {
+class SeatDecoder(val seats: List<Seat>) {
 
-    private val seats: List<Seat> = listOf()
+    constructor(seat: Seat) : this(listOf(seat))
 
-    fun readSeat(input: String): Seat {
-        val rowCode = input.substring(0, 7)
-        val columnCode = input.substring(7)
-        return Seat(
-                RowBinarySpacePartition().decode(rowCode).min,
-                ColumnBinarySpacePartition().decode(columnCode).min
-        )
+    companion object {
+
+        fun readSeatFromInput(input: String): SeatDecoder {
+            return SeatDecoder(readSeat(input))
+        }
+
+        private fun readSeat(input: String): Seat {
+            val rowCode = input.substring(0, 7)
+            val columnCode = input.substring(7)
+            return Seat(
+                    RowBinarySpacePartition().decode(rowCode).min,
+                    ColumnBinarySpacePartition().decode(columnCode).min
+            )
+        }
+
+        fun readFromInput(input: List<String>): SeatDecoder {
+            return SeatDecoder(input.map { readSeat(it) }.toList())
+        }
     }
 
-    fun findSeatWithHigherIdFrom(input: List<String>): Seat? {
-        return input
-                .map { readSeat(it) }
-                .maxBy { it.id }
-
+    fun findSeatWithHigherIdFrom(): Seat? {
+        return seats.maxBy { it.id }
     }
 
-    fun findMissingSeats(input: List<String>): List<Int> {
+    fun findMissingSeat(): Int {
+        val seatsIds = seats.map { it.id }
+        val maxRow = seats.minBy { it -> it.id }!!.row
+        val maxColumn = seats.maxBy { it.id }!!.row
 
-        val missingIds = 0.rangeTo(1023).toMutableList()
-        input
-                .map { readSeat(it)}
+        val filterIds = seats
+                .filterNot { it.row == maxRow }
+                .filterNot { it.row == maxColumn }
                 .map { it.id }
-                .forEach { missingIds.remove(it) }
-        missingIds.remove(127)
-        //row * 8 + column
-        // row == 0
-        0.rangeTo(7).forEach { missingIds.remove(it) }
-        0.rangeTo(7).forEach { missingIds.remove(127*8 + it) }
-        return missingIds //592
+
+        return filterIds.min()!!.rangeTo(filterIds.max()!!)
+                .filterNot { it in seatsIds }
+                .first()
 
     }
+
 }

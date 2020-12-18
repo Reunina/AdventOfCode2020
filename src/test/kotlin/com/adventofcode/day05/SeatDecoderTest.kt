@@ -7,27 +7,27 @@ import org.junit.jupiter.api.assertAll
 
 internal class SeatDecoderTest {
 
-    private val seatDecoder = SeatDecoder()
 
     @Test
     fun shouldBeAbleToDecodeSeatFromInputText() {
+
         assertAll({
-            assertThatSeat(seatDecoder.readSeat("FBFBBFFRLR"))
+            assertThatSeat(SeatDecoder.readSeatFromInput("FBFBBFFRLR").seats[0])
                     .isEqualToComparingFieldByFieldRecursively(Seat(row = 44, column = 5))
 
-            assertThatSeat(seatDecoder.readSeat("FFFBBBFRRR"))
+            assertThatSeat(SeatDecoder.readSeatFromInput("FFFBBBFRRR").seats[0])
                     .isEqualToComparingFieldByFieldRecursively(Seat(row = 14, column = 7))
 
-            assertThatSeat(seatDecoder.readSeat("BBFFBBFRLL"))
+            assertThatSeat(SeatDecoder.readSeatFromInput("BBFFBBFRLL").seats[0])
                     .isEqualToComparingFieldByFieldRecursively(Seat(row = 102, column = 4))
         })
     }
 
     @Test
     fun shouldBeAbleToFindWithHigherIdFrom() {
-        val input = listOf("BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL")
+        val seatDecoder = SeatDecoder.readFromInput(listOf("BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"))
         assertThatSeat(
-                seatDecoder.findSeatWithHigherIdFrom(input)!!
+                seatDecoder.findSeatWithHigherIdFrom()!!
         )
                 .isEqualToComparingFieldByFieldRecursively(Seat(row = 102, column = 4))
 
@@ -37,15 +37,23 @@ internal class SeatDecoderTest {
 
     @Test
     fun shouldBeAbleToFindMissingSeats() {
+        val seatDecoder = SeatDecoder(
+                listOf(
+                        Seat(0, 0),
+                        Seat(0, 1),
+                        Seat(0, 2),
 
-        val input = listOf("XXXXXXXXXX", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL")
-        assertThat(
-                seatDecoder.findMissingSeats(input)
-        ).hasSize(1020)
-                .doesNotContainAnyElementsOf(listOf(1023,
-                        567,
-                        119,
-                        820 ))
+                        Seat(1, 0),
+                        // Seat(1,1), // missing one
+                        Seat(1, 2),
+
+                        Seat(2, 0),
+                        Seat(2, 1),
+                        Seat(2, 2)
+                )
+        )
+
+        assertThat(seatDecoder.findMissingSeat()).isEqualTo(9)
 
 
     }

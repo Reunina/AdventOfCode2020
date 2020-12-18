@@ -1,6 +1,7 @@
 package com.adventofcode.day05
 
 import java.io.Serializable
+import java.util.*
 
 data class Seat(val row: Int, val column: Int) : Serializable {
 
