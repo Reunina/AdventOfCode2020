@@ -1,37 +1,52 @@
 package com.adventofcode.day05
 
 import com.adventofcode.day05.SeatAssert.Companion.assertThatSeat
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 
 internal class SeatDecoderTest {
 
+    private val seatDecoder = SeatDecoder()
+
     @Test
     fun shouldBeAbleToDecodeSeatFromInputText() {
         assertAll({
-            assertThatSeat(SeatDecoder.readSeat("FBFBBFFRLR"))
+            assertThatSeat(seatDecoder.readSeat("FBFBBFFRLR"))
                     .isEqualToComparingFieldByFieldRecursively(Seat(row = 44, column = 5))
 
-            assertThatSeat(SeatDecoder.readSeat("FFFBBBFRRR"))
+            assertThatSeat(seatDecoder.readSeat("FFFBBBFRRR"))
                     .isEqualToComparingFieldByFieldRecursively(Seat(row = 14, column = 7))
 
-            assertThatSeat(SeatDecoder.readSeat("BBFFBBFRLL"))
+            assertThatSeat(seatDecoder.readSeat("BBFFBBFRLL"))
                     .isEqualToComparingFieldByFieldRecursively(Seat(row = 102, column = 4))
         })
     }
 
     @Test
     fun shouldBeAbleToFindWithHigherIdFrom() {
-        val input = listOf("BFFFBBFRRR: row 70, column 7, seat ID 567",
-                "FFFBBBFRRR: row 14, column 7, seat ID 119",
-                "BBFFBBFRLL: row 102, column 4, seat ID 820"
-        )
+        val input = listOf("BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL")
         assertThatSeat(
-                SeatDecoder.findSeatWithHigherIdFrom(input)
+                seatDecoder.findSeatWithHigherIdFrom(input)!!
         )
                 .isEqualToComparingFieldByFieldRecursively(Seat(row = 102, column = 4))
 
 
     }
 
+
+    @Test
+    fun shouldBeAbleToFindMissingSeats() {
+
+        val input = listOf("XXXXXXXXXX", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL")
+        assertThat(
+                seatDecoder.findMissingSeats(input)
+        ).hasSize(1020)
+                .doesNotContainAnyElementsOf(listOf(1023,
+                        567,
+                        119,
+                        820 ))
+
+
+    }
 }

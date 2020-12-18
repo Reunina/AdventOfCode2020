@@ -6,7 +6,10 @@ fun main() {
     val input: List<String> =
             File("src/main/resources/day05/puzzle_input.txt")
                     .readLines()
-    val seatWithHigherID = SeatDecoder.findSeatWithHigherIdFrom(input)
-    println("Day 05, part 1 :$seatWithHigherID")
+    val seatDecoder = SeatDecoder()
+    val seatWithHigherID = seatDecoder.findSeatWithHigherIdFrom(input)
+    val missingSeats = seatDecoder.findMissingSeats(input)
+    println("Day 05, part 01 :$seatWithHigherID")
+    println("Day 05, part 02 :$missingSeats")
 }
  

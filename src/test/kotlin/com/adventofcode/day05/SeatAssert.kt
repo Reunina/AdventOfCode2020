@@ -31,7 +31,7 @@ class SeatAssert(value: Seat?) : AbstractObjectAssert<SeatAssert, Seat?>(value, 
 
 
     companion object {
-        fun assertThatSeat(value: Seat?): SeatAssert {
+        fun assertThatSeat(value: Seat): SeatAssert {
             return SeatAssert(value)
         }
     }
