@@ -12,6 +12,6 @@ fun main() {
             .map { it.questionAnswered() }
             .sum()
 
-    println("NDay 06, sum of counts: $sumOfCounts")
+    println("Day 06, sum of counts: $sumOfCounts")
 }
  
