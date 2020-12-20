@@ -3,10 +3,15 @@ package com.adventofcode.day06
 import java.io.File
  
 fun main() {
-    val input: List<Int> =
+    val input: String =
             File("src/main/resources/day06/puzzle_input.txt")
-                    .readLines()
-                    .map(String::toInt)
-    println("No code yet for this Day ! ")
+                    .readText()
+
+    val sumOfCounts = input.split("\n\n")
+            .map(Group.Companion::readFrom)
+            .map { it.questionAnswered() }
+            .sum()
+
+    println("NDay 06, sum of counts: $sumOfCounts")
 }
  
