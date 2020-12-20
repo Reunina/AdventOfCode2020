@@ -1,7 +1,20 @@
 = Advent of code 2020
-
-These are solutions for a serie aof puzzles you can find here:
+These are solutions for a serie of puzzles you can find here:
  https://adventofcode.com/2020[advent of code 2020].
+
+== Technology stack
+
+programming language::
+https://kotlinlang.org/[Kotlin]
+
+build sources::
+https://maven.apache.org/[Maven]
+
+build documentation::
+https://asciidoctor.org/[Asciidoctor]
+
+test code::
+https://assertj.github.io/doc/[AssertJ] & https://pitest.org/[Pit-test]
 
 
 == Running solutions
@@ -13,20 +26,20 @@ Run this with you preferred java tool or command line.
 
 == Github ci
 
-A each push or pull request at the `main` branch the `github/workflows/testing.yml` is launch.
+At each push or pull request at the `main` branch the `github/workflows/testing.yml` is launch.
 
 === Running and publishing unit tests
 
-Unit tests are executed by maven and then published. When you are working on a pull request, results can be show as follow:
+Unit tests are executed by maven and then published.
+When you are working on a pull request, results can be show as follow:
 
 .Example of publishing failling tests on a PR.
 [caption=""]
-image::src/docs/image/publish_failling_tests.png[publishing failling tests]
+image::src/docs/images/publish_failling_tests.png[publishing failling tests]
 
 .Example of publishing successful tests on a PR.
 [caption=""]
-image::src/docs/image/publish_successful_tests.png[publishing successful tests]
-
+image::src/docs/images/publish_successful_tests.png[publishing successful tests]
 
 === Running and archiving mutation tests
 
@@ -36,5 +49,5 @@ The results are archived as artifact in the action panel:
 
 .Example of archiving mutation tests results.
 [caption=""]
-image::src/docs/image/archiving_mutation_tests_results.png[archiving mutation tests results]
+image::src/docs/images/archiving_mutation_tests_results.png[archiving mutation tests results]
 

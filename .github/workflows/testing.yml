@@ -49,10 +49,16 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mutation_testing_results
-          path: target/pit-reports/
+          path: src/docs/pit-reports/
 
-      - name: Publish mutation testing results to github Pages
+      #Compute documentation
+      - name: Publish documentation with asciidoctor
+        run:  mvn asciidoctor:process-asciidoc
+
+      #Publish documentation
+      - name: Publish to github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/pit-reports/*/
+          publish_dir: ./target/generated-docs/
+          enable_jekyll: true
