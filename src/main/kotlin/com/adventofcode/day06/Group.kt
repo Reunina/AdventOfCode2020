@@ -1,12 +1,19 @@
 package com.adventofcode.day06
 
-class Group(val persons: List<Person>) {
+class Group(private val persons: List<Person>) {
 
     constructor() : this(Person(""))
     constructor(onePerson: Person) : this(listOf(onePerson))
 
-    fun  questionAnswered(): Int {
+    fun  questionAtLeastOnePersonAnswered(): Int {
         return persons.map { it.answers }.flatten().distinct().count()
+
+    }
+
+    fun  questionEveryPersonAnswered(): Int {
+        return 'a'.rangeTo('z')
+                .filter { char -> persons.map { it.answers }.all { it.contains(char) } }
+                .count()
 
     }
 
