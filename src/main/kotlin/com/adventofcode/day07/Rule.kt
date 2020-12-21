@@ -1,12 +1,13 @@
 package com.adventofcode.day07
 
-typealias Bags = Map<String, Int>
+typealias Bags = Map<Bag, Int>
+typealias Bag = String
 
-class Rule(val bagName: String) {
+class Rule(val bagName: Bag) {
 
     var innerBags: Bags = mutableMapOf()
 
-    constructor(bagName: String, vararg innerBagsAsString: String) : this(bagName) {
+    constructor(bagName: Bag, vararg innerBagsAsString: Bag) : this(bagName) {
         innerBags = innerBagsAsString
                 .map { it.split(" ") }
                 .filterNot { it.isNullOrEmpty() }
@@ -15,13 +16,13 @@ class Rule(val bagName: String) {
                 .toMap()
     }
 
-    override fun toString(): String {
-        if (innerBags.isNullOrEmpty()) return String.format("[%s] contains no other bag", bagName)
-        return String.format("[%s] contains %s", bagName, innerBags)
+    override fun toString(): Bag {
+        if (innerBags.isNullOrEmpty()) return Bag.format("[%s] contains no other bag", bagName)
+        return Bag.format("[%s] contains %s", bagName, innerBags)
     }
 
     companion object {
-        fun from(input: String): Rule {
+        fun from(input: Bag): Rule {
             val values = input
                     .split(" bags contain | bag(s){0,1}, | bag(s){0,1}\\.".toRegex())
             if(values.isNotEmpty() && values[1] != "no other") return  Rule(values[0], *values.subList(1, values.size).toTypedArray())

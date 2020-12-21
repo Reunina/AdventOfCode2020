@@ -73,7 +73,7 @@ internal class BagFinderTest {
                             BagFinder(
                                     "light red bags contain 1 bright white bag, 2 muted yellow bags.\n" +
                                             "dark orange bags contain 3 bright white bags, 4 muted green bags.")
-                                    .findBagsThatCanContains("muted green")
+                                    .findBagColorsThatCanContains("muted green")
                     )
                             .`as`("should find Bag color in first indentation ")
                             .hasSize(1)
@@ -84,7 +84,7 @@ internal class BagFinderTest {
                             BagFinder(
                                     "light red bags contain 1 dark orange bag, 2 muted yellow bags.\n" +
                                             "dark orange bags contain 3 bright white bags, 4 muted green bags.")
-                                    .findBagsThatCanContains("muted green")
+                                    .findBagColorsThatCanContains("muted green")
                     )
                             .`as`("should find Bag color in second indentation ")
                             .hasSize(2)
@@ -98,7 +98,7 @@ internal class BagFinderTest {
                                     "light red bags contain 1 dark orange bag, 2 muted yellow bags.\n" +
                                             "muted blue bags contain 1 light red bag, 2 muted red bags.\n" +
                                             "dark orange bags contain 3 bright white bags, 4 muted green bags.")
-                                    .findBagsThatCanContains("bright white")
+                                    .findBagColorsThatCanContains("bright white")
                     )
                             .`as`("should find Bag color in third indentation ")
                             .hasSize(3)
@@ -109,6 +109,30 @@ internal class BagFinderTest {
                             )
                 }
         )
+
+    }
+
+
+    @Test
+    fun shouldFindHowManyBagAreRequiredInAGivenBagColor() {
+
+        assertThat(
+                BagFinder(
+                        "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.")
+                        .findAllNestedBagsThatAreIn("shiny gold")
+        )
+                .`as`("should find Bag color in first indentation ")
+                .isEqualTo(3)
+
+        assertThat(
+                BagFinder(
+                        "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.\n" +
+                                "dark olive bags contain 3 faded blue bags, 4 dotted black bags.")
+                        .findAllNestedBagsThatAreIn("shiny gold")
+        )
+                .`as`("should find Bag color in second indentation ")
+                .isEqualTo(10)
+
 
     }
 
