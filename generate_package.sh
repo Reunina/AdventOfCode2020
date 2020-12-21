@@ -14,9 +14,12 @@ mkdir -p "./src/test/kotlin/com/adventofcode/${theDay}"
 
 resourceFile="src/main/resources/${theDay}/puzzle_input.txt"
 javaFile="./src/main/kotlin/com/adventofcode/${theDay}/${theDayCapitalized}.kt"
+readmeFile="./src/main/kotlin/com/adventofcode/${theDay}/README.adoc"
 
 touch $resourceFile
 touch $javaFile
+touch $readmeFile
+
 
 echo "package com.adventofcode.${theDay}"  > ${javaFile}
 echo "" >> ${javaFile}
