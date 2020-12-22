@@ -146,7 +146,6 @@ class ConsoleAssert(value: Console?) : AbstractObjectAssert<ConsoleAssert, Conso
         return this
     }
 
-
     companion object {
         fun assertThatConsole(value: Console): ConsoleAssert {
             return ConsoleAssert(value)

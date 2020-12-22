@@ -73,11 +73,11 @@ internal class GroupTest {
     fun shouldReadGroupFromInput() {
 
         assertThat(Group.readFrom("abc"))
-                .`as`("One person groups hsould be read from input")
+                .`as`("One person groups hsould be read from adapters")
                 .isEqualToComparingFieldByFieldRecursively(Group(Person("abc")))
 
         assertThat(Group.readFrom("abc\na"))
-                .`as`("Multiple persons groups hsould be read from input")
+                .`as`("Multiple persons groups hsould be read from adapters")
                 .isEqualToComparingFieldByFieldRecursively(
                         Group(listOf(Person("abc"), Person("a")))
                 )
