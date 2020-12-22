@@ -48,7 +48,7 @@ internal class ConsoleTest {
                             .hasAccumulatorAt(0)
                             .hasAllInstructionsVisitedBut(1)
 
-                    assertThatConsole(Console("jmp +2", "acc +1","jmp -1").boot())
+                    assertThatConsole(Console("jmp +2", "acc +1", "jmp -1").boot())
                             .`as`("jmp instruction with offset at 1 should do nothing")
                             .hasAccumulatorAt(1)
                             .hasAllInstructionsVisited()
@@ -67,14 +67,13 @@ internal class ConsoleTest {
                             .`as`("jmp instruction with offset at 1 should do nothing")
                             .hasAllInstructionsVisited()
 
-                    assertThatConsole(Console( "nop +0",  "jmp +2",  "nop +0").boot())
+                    assertThatConsole(Console("nop +0", "jmp +2", "nop +0").boot())
                             .`as`("jmp instruction with offset at 1 should do nothing")
                             .hasAllInstructionsVisitedBut(1)
                 }
         )
 
     }
-
 
 
     @Test
@@ -94,6 +93,30 @@ internal class ConsoleTest {
 
     }
 
+    @Test
+    fun shouldFoundMutatedInstructionsThatComputeNormallyChangingJmpToNop() {
+
+        val console = Console(
+                "nop +0",
+                "acc +1",
+                "jmp +4",
+                "acc +3",
+                "jmp -3",
+                "acc -99",
+                "acc +1",
+                "jmp -4",
+                "acc +6")
+
+        assertThatConsole(console.boot())
+                .hasNotLastInstructionsVisited()
+                .hasAccumulatorAt(5)
+
+        assertThatConsole(console.smartBoot())
+                .hasLastInstructionsVisited()
+                .hasAccumulatorAt(8)
+
+    }
+
 
 }
 
@@ -104,13 +127,23 @@ class ConsoleAssert(value: Console?) : AbstractObjectAssert<ConsoleAssert, Conso
         return this
     }
 
+    fun hasLastInstructionsVisited(): ConsoleAssert {
+        assertThat(actual?.visitedInstructions).contains(actual?.instructions?.size!! - 1)
+        return this
+    }
+
+    fun hasNotLastInstructionsVisited(): ConsoleAssert {
+        assertThat(actual?.lastInstructionHasBeenVisited()).isFalse()
+        return this
+    }
+
     fun hasAllInstructionsVisited(): ConsoleAssert {
-        assertThat(actual?.instructions?.map { it.second }?.none{ false}).isEqualTo(true)
+        assertThat(actual?.lastInstructionHasBeenVisited()).isTrue()
         return this
     }
 
     fun hasAllInstructionsVisitedBut(expectedNumber: Int): ConsoleAssert {
-        assertThat(actual?.instructions?.map { it.second }?.filter{ it == false}?.count()).isEqualTo(expectedNumber)
+        assertThat(actual?.visitedInstructions).hasSize(actual?.instructions?.size!! - expectedNumber)
         return this
     }
 
