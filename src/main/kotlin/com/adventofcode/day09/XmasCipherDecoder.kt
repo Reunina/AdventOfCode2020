@@ -2,11 +2,16 @@ package com.adventofcode.day09
 
 typealias Code = Long
 
-class XmasCipherDecoder(var preamble: Collection<Code>, var codes: Collection<Code> = mutableListOf()) {
-    constructor(preambleAsInts: List<Int>) : this(
-            preambleAsInts.map { it.toLong() }.toList()
-    )
+class XmasCipherDecoder(val preambleAndCodes: Collection<Code>, val preambleSize : Int) {
 
+    var preamble = preambleAndCodes.toMutableList().subList(0, preambleSize)
+    val codes = preambleAndCodes.toList().subList( preambleSize ,preambleAndCodes.size )
+
+    constructor( preamble: Collection<Code>,   codes: Collection<Code> = mutableListOf()) :
+            this(preamble + codes , preamble.size)
+
+
+    constructor(preambleAsInts: List<Int>) : this(preambleAsInts.map { it.toLong() }.toList())
 
     companion object {
 
@@ -31,7 +36,7 @@ class XmasCipherDecoder(var preamble: Collection<Code>, var codes: Collection<Co
     }
 
     fun read(code: Code) {
-        preamble = preamble.toMutableList() - listOf(preamble.first()) + listOf(code)
+        preamble = (preamble - listOf(preamble.first()) + listOf(code)).toMutableList()
     }
 
     fun findFirstInvalidCode(): Code? {
@@ -41,6 +46,10 @@ class XmasCipherDecoder(var preamble: Collection<Code>, var codes: Collection<Co
             if (validity) read(it)
         }
         return null
+    }
+
+    fun findEncryptionWeakness(): Code {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 

@@ -106,10 +106,10 @@ internal class XmasCipherDecoderTest {
                 .findFirstNonValidDataAs(63939575729959)
 
 
-        val decoderWithConsequentCodesWithAllValid  = XmasCipherDecoder
+        val decoderWithConsequentCodesWithAllValid = XmasCipherDecoder
                 .readFrom("1\n" +
                         "63939575729959\n" +
-                        "63939575729960" , 2)
+                        "63939575729960", 2)
 
 
         assertThatXmasCipherDecoder(decoderWithConsequentCodesWithAllValid)
@@ -117,6 +117,7 @@ internal class XmasCipherDecoderTest {
 
 
     }
+
     @Test
     fun shouldHIgnoreEmptyLinesInInput() {
 
@@ -133,7 +134,26 @@ internal class XmasCipherDecoderTest {
 
     }
 
+    @Test
+    fun shouldFindTheEncryptionWeakness() {
+
+
+        val decoderWithExampleInput = XmasCipherDecoder
+                .readFrom(exampleInput, 5)
+
+
+        assertThatXmasCipherDecoder(decoderWithExampleInput)
+                .findFirstNonValidDataAs(127L)
+
+
+        assertThatXmasCipherDecoder(decoderWithExampleInput)
+                .findEncryptionWeaknessAs(62L)
+
+
+        //    in this example, these are 15 and 47, producing 62.
     }
+
+}
 
 class XmasCipherDecoderAssert(value: XmasCipherDecoder?) : AbstractObjectAssert<XmasCipherDecoderAssert, XmasCipherDecoder?>(value, XmasCipherDecoderAssert::class.java) {
 
@@ -166,6 +186,11 @@ class XmasCipherDecoderAssert(value: XmasCipherDecoder?) : AbstractObjectAssert<
 
     fun hasNoInvalidCode(): XmasCipherDecoderAssert {
         assertThat(actual?.findFirstInvalidCode()).isEqualTo(null)
+        return this
+    }
+
+    fun findEncryptionWeaknessAs(expectedWeakness: Code): XmasCipherDecoderAssert {
+        assertThat(actual?.findEncryptionWeakness()).isEqualTo(expectedWeakness)
         return this
     }
 
