@@ -1,6 +1,6 @@
 package com.adventofcode.day10
 
-typealias  Adapters = Collection<Adapter>
+typealias  Adapters = List<Adapter>
 typealias Adapter = Int
 
 enum class JoltDifferences(private val jolts: Int) {
@@ -16,42 +16,43 @@ enum class JoltDifferences(private val jolts: Int) {
 class HomeMadeAdapter(private val adaptersJolts: Adapters) {
 
     private val startingJolt = 0
-
-    var differences: Map<JoltDifferences, Int> = mutableMapOf()
+    val rateJolts = adaptersJolts.max()!! + 3
 
     constructor(adaptersAsString: String) : this(adaptersAsString.split('\n').map { it.toInt() }.sorted())
 
+    fun joinAdapters(): Map<JoltDifferences?, Int> {
 
-    fun rateJolts(): Adapter {
-        return adaptersJolts.max()!! + 3
-    }
-
-
-    fun joinAdapters(): HomeMadeAdapter {
-        val availableAdapters = adaptersJolts.toMutableList()
+        val availableAdapters: MutableMap<Adapter, JoltDifferences?> = adaptersJolts.map { it to null }.toMap().toMutableMap()
         var joltage = startingJolt
-
-        while (availableAdapters.isNotEmpty()) {
-            val adapterToUse = findAdapterToPlugWithAmong(joltage, adaptersJolts)
-            availableAdapters.remove(adapterToUse)
+        while (availableAdapters.any { it.value == null }) {
+            val adapterToUse = findMinimalAdapterToPlugWith(joltage) ?: rateJolts
+            availableAdapters[adapterToUse] = JoltDifferences.forDiff(adapterToUse - joltage)
             joltage = adapterToUse
         }
-        findAdapterToPlugWithAmong(joltage, listOf(rateJolts()))
-        return this
+        return availableAdapters.map { it.value }.groupBy { it }.map { it.key to it.value.size }.toMap()
     }
 
-    private fun classifyTheDifference(initialJoltage: Int, newJolatge: Adapter) {
-        val diff = newJolatge - initialJoltage
-        val typeOfDiff = JoltDifferences.forDiff(diff)
-        differences += Pair(typeOfDiff, differences.getOrDefault(typeOfDiff, 0) + 1)
+    private fun findMinimalAdapterToPlugWith(joltage: Int): Adapter? {
+        val adaptersToUse = findAdaptersToPlugWith(joltage, adaptersJolts)
+        return adaptersToUse.min()
     }
 
-    private fun findAdapterToPlugWithAmong(joltage: Int, availableAdapters: Adapters): Adapter {
+    private fun findAdaptersToPlugWith(joltage: Int, adapters: Adapters): Adapters {
         val authorizedJolts = 1.rangeTo(3).map { joltage + it }.toList()
-         val adapterToUse = availableAdapters.filter { it in authorizedJolts }.min()!!
-
-        classifyTheDifference(joltage, adapterToUse)
-        return adapterToUse
+        return adapters.filter { it in authorizedJolts }
     }
+
+    fun findAllValidArrangements(): Long {
+        val allAdapters = adaptersJolts.map { it.toLong() }.sorted()
+        val validPaths = mutableMapOf(0L to 1L)
+        allAdapters.forEach {
+            adapterIndex ->
+            validPaths[adapterIndex] = (1..3).map { previousAdapterIndex -> validPaths.getOrDefault(adapterIndex-previousAdapterIndex, 0) }.sum()
+        }
+        return validPaths.getValue(allAdapters.last())
+    }
+
+
+
 }
 
