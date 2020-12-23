@@ -77,7 +77,7 @@ internal class ConsoleTest {
 
 
     @Test
-    fun shouldStopWhenItingAnInfiniteLoop() {
+    fun shouldStopWhenHittingAnInfiniteLoop() {
         assertThatConsole(Console(
                 "nop +0",
                 "acc +1",
@@ -116,7 +116,6 @@ internal class ConsoleTest {
                 .hasAccumulatorAt(8)
 
     }
-
 
 }
 
