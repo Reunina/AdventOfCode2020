@@ -6,9 +6,19 @@ import java.io.File
 
 class Day11Test {
 
+
     @Test
-    fun shouldComputeThisSimpleExample() {
-        val input = "L.LL.LL.LL\n" +
+    fun shouldFound2270WithFullInput() {
+
+        assertThat(SeatHandler.fromInput(File("src/main/resources/day11/puzzle_input.txt")
+                .readLines()
+                .map { it.toCharArray() }).runOccupationSeatsSimulation()
+        ).isEqualTo(2270L)
+    }
+
+    @Test
+    fun aasahouldComputeThisSimpleExample() {
+        val input = ("L.LL.LL.LL\n" +
                 "LLLLLLL.LL\n" +
                 "L.L.L..L..\n" +
                 "LLLL.LL.LL\n" +
@@ -17,16 +27,11 @@ class Day11Test {
                 "..L.L.....\n" +
                 "LLLLLLLLLL\n" +
                 "L.LLLLLL.L\n" +
-                "L.LLLLL.LL"
+                "L.LLLLL.LL").split("\n").map { it.toCharArray() }
+
         assertThat(SeatHandler.fromInput(input).runOccupationSeatsSimulation())
                 .isEqualTo(37L)
     }
 
-    @Test
-    fun shouldFound2270WithFullInput() {
 
-        assertThat(SeatHandler.fromInput(File("src/main/resources/day11/puzzle_input.txt")
-                .readLines()).runOccupationSeatsSimulation())
-                .isEqualTo(2270L)
-    }
 }
