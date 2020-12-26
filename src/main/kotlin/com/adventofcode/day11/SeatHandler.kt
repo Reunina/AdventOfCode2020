@@ -1,21 +1,20 @@
 package com.adventofcode.day11
 
+import kotlin.reflect.KFunction3
+
 
 typealias Layout = List<Triple<Int, Int, Char>>
 
 class SeatHandler(private val layout: Layout) {
 
-    val FLOOR = '.'
-    val EMPTY_SEAT = 'L'
-    val OCCUPIED_SEAT = '#'
+    private val empty = 'L'
+    private val occupied = '#'
 
     companion object {
 
         fun fromInput(input: List<CharArray>): SeatHandler {
             val layout = input
-                    .mapIndexed { x, values ->
-                        values.mapIndexed { y, value -> Triple(x, y, value) }.toList()
-                    }
+                    .mapIndexed { x, values -> values.mapIndexed { y, value -> Triple(x, y, value) }.toList() }
                     .flatten()
                     .filterNot { it.third == '.' }
             return SeatHandler(layout)
@@ -23,46 +22,95 @@ class SeatHandler(private val layout: Layout) {
     }
 
 
-    fun runOccupationSeatsSimulation(): Int {
+    fun runOccupationSeatsSimulation(maxAdjacentToChange: Int, filter: KFunction3<Layout, @ParameterName(name = "currentX") Int, @ParameterName(name = "currentY") Int, Int>): Int {
         var previousRunningLayout = layout.toList()
         do {
-            val previous = previousRunningLayout.count { it.third == OCCUPIED_SEAT }
-            val actualRunningLayout = changeSeatsOf(previousRunningLayout)
-            val actual = actualRunningLayout.count { it.third == OCCUPIED_SEAT }
+            val previous = previousRunningLayout.count { it.third == occupied }
+            val actualRunningLayout = changeSeatsOf(previousRunningLayout, filter, maxAdjacentToChange)
+            val actual = actualRunningLayout.count { it.third == occupied }
 
             previousRunningLayout = actualRunningLayout
 
         } while (previous != actual)
 
-        return previousRunningLayout.count { it.third == OCCUPIED_SEAT }
+        return previousRunningLayout.count { it.third == occupied }
     }
 
-    private fun changeSeatsOf(layout: Layout): Layout {
+    fun runOccupationSeatsSimulationWithAdjacentSeats(): Int {
+        return runOccupationSeatsSimulation(3, ::howManyAdjacentSeatsAreOccupied)
+    }
+
+    private fun changeSeatsOf(layout: Layout, filter: KFunction3<Layout, @ParameterName(name = "currentX") Int, @ParameterName(name = "currentY") Int, Int>, maxToChange: Int): Layout {
         return layout
                 .map {
-                    it to howManyAdjacentSeatsAreOccupied(layout, it.first, it.second)
-                }
-                .map {
-                    Triple(it.first.first, it.first.second, newType(it.first.third, it.second))
+                    Triple(it.first, it.second,
+                            newSeatType(it.third, filter.call(layout, it.first, it.second),
+                                    maxToChange))
                 }
     }
 
-    private fun newType(seatType: Char, actualOccupiedSeatsNearBy: Int): Char {
-        if (seatType == EMPTY_SEAT && actualOccupiedSeatsNearBy == 0) return OCCUPIED_SEAT
-        if (seatType == OCCUPIED_SEAT && actualOccupiedSeatsNearBy > 3) return EMPTY_SEAT
+    private fun newSeatType(seatType: Char, actualOccupiedSeatsNearBy: Int, maxOccupied: Int): Char {
+        if (seatType == empty && actualOccupiedSeatsNearBy == 0) return occupied
+        if (seatType == occupied && actualOccupiedSeatsNearBy > maxOccupied) return empty
         return seatType
     }
 
-    private fun howManyAdjacentSeatsAreOccupied(currentLayout: Layout, currentX: Int, currentY: Int): Int {
+    fun howManyAdjacentSeatsAreOccupied(currentLayout: Layout, currentX: Int, currentY: Int): Int {
         return currentLayout
+                .filter { arePositionAdjacent(it.first, it.second, currentX, currentY) }
+                .count { it.third == occupied }
+    }
+
+    fun runOccupationSeatsSimulationWithFirstVisibleSeats(): Long {
+        return runOccupationSeatsSimulation(4, ::howManyVisibleSeatsAreOccupied).toLong()
+    }
+
+
+    fun howManyVisibleSeatsAreOccupied(currentLayout: Layout, currentX: Int, currentY: Int): Int {
+        val onAllAxes = currentLayout
                 .filter {
-                    (it.first != currentX || it.second != currentY)
-                            &&
-                            ( it.first  > currentX - 2  && it.first <currentX + 2)
-                            &&
-                            ( it.second  > currentY - 2  && it.second <currentY + 2)
-                }
-                .count { it.third == OCCUPIED_SEAT }
+                    isNotCurrentPosition(it.first, it.second, currentX, currentY)
+                            && (
+                            isOnDiagonals(it, currentX, currentY) ||
+                                    isOnHorizon(it, currentY) ||
+                                    isOnVertical(it, currentX)
+                            )
+                }.toList()
+        return listOfNotNull(
+                onAllAxes.lastOrNull { it.first < currentX && it.second == currentY },
+                onAllAxes.lastOrNull { it.first < currentX && it.second < currentY },
+                onAllAxes.lastOrNull { it.first < currentX && it.second > currentY },
+                onAllAxes.lastOrNull { it.first == currentX && it.second < currentY },
+                onAllAxes.firstOrNull { it.first == currentX && it.second > currentY },
+                onAllAxes.firstOrNull { it.first > currentX && it.second == currentY },
+                onAllAxes.firstOrNull { it.first > currentX && it.second < currentY },
+                onAllAxes.firstOrNull { it.first > currentX && it.second > currentY }
+        )
+                .filter { it.third == occupied }.count()
+
 
     }
+
+    private fun arePositionAdjacent(otherX: Int, otherY: Int, currentX: Int, currentY: Int): Boolean {
+        return (isNotCurrentPosition(otherX, otherY, currentX, currentY)
+                &&
+                (otherX > currentX - 2 && otherX < currentX + 2)
+                &&
+                (otherY > currentY - 2 && otherY < currentY + 2))
+    }
+
+    private fun isOnVertical(it: Triple<Int, Int, Char>, currentX: Int) =
+            (it.first == currentX)
+
+    private fun isOnHorizon(it: Triple<Int, Int, Char>, currentY: Int) =
+            (it.second == currentY)
+
+    private fun isOnDiagonals(it: Triple<Int, Int, Char>, currentX: Int, currentY: Int) =
+            (it.second == it.first * -1 + (currentY + currentX)) //  y = (-1) * x + (currentY + currentX)
+                    || (it.second == it.first * 1 + (currentY - currentX)) //  y = (1) * x + (currentY - currentX)
+
+    private fun isNotCurrentPosition(otherX: Int, otherY: Int, currentX: Int, currentY: Int) =
+            (otherX != currentX || otherY != currentY)
+
+
 }

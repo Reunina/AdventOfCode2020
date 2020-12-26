@@ -12,12 +12,12 @@ class Day11Test {
 
         assertThat(SeatHandler.fromInput(File("src/main/resources/day11/puzzle_input.txt")
                 .readLines()
-                .map { it.toCharArray() }).runOccupationSeatsSimulation()
+                .map { it.toCharArray() }).runOccupationSeatsSimulationWithAdjacentSeats()
         ).isEqualTo(2270L)
     }
 
     @Test
-    fun aasahouldComputeThisSimpleExample() {
+    fun shouldComputeSimpleExampleOfSimulationWithAdjacentSeats() {
         val input = ("L.LL.LL.LL\n" +
                 "LLLLLLL.LL\n" +
                 "L.L.L..L..\n" +
@@ -29,8 +29,17 @@ class Day11Test {
                 "L.LLLLLL.L\n" +
                 "L.LLLLL.LL").split("\n").map { it.toCharArray() }
 
-        assertThat(SeatHandler.fromInput(input).runOccupationSeatsSimulation())
+        assertThat(SeatHandler.fromInput(input).runOccupationSeatsSimulationWithAdjacentSeats())
                 .isEqualTo(37L)
+    }
+
+    @Test
+    fun shouldFound2042WithFullInput() {
+
+        assertThat(SeatHandler.fromInput(File("src/main/resources/day11/puzzle_input.txt")
+                .readLines()
+                .map { it.toCharArray() }).runOccupationSeatsSimulationWithFirstVisibleSeats()
+        ).isEqualTo(2042L)
     }
 
 
