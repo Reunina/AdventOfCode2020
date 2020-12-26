@@ -9,10 +9,21 @@ class Day12Test {
     @Test
     fun shouldComputePart01() {
 
-        val ferry = Ferry().followInstructions(File("src/main/resources/day12/puzzle_input.txt")
+        val ferry = BasicFerry().followInstructions(File("src/main/resources/day12/puzzle_input.txt")
                 .readLines())
 
         assertThat(ferry.distance())
                 .isEqualTo(2879L)
     }
+
+    @Test
+    fun shouldComputePart02() {
+
+        val ferry = SmartyPantsFerry().followInstructions(File("src/main/resources/day12/puzzle_input.txt")
+                .readLines())
+
+        assertThat(ferry.distance())
+                .isEqualTo(178986L)
+    }
+
 }
