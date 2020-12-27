@@ -15,4 +15,14 @@ internal class Day13KtTest {
                 ShuttleBusService.readFrom(input[0], input[1]).findEarliestIdByWaitingTime()
         ).isEqualTo(370L)
     }
+
+    @Test
+    fun shouldFindExpectedResultWithGivenInputForPart02() {
+        val input: List<String> =
+                File("src/main/resources/day13/puzzle_input.txt")
+                        .readLines()
+        assertThat(
+                ShuttleBusServicePart02(*input[1].split(",").toTypedArray()).findEarliestTimeStampThatMatchesWithTheBusDeparturePosition()
+        ).isEqualTo(894954360381385L)
+    }
 }

@@ -1,8 +1,9 @@
-package com.adventofcode.day13.day13
+package com.adventofcode.day13
 
-import com.adventofcode.day13.ShuttleBusService
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestFactory
 
 class ShuttleBusServiceTest {
 
@@ -41,7 +42,7 @@ class ShuttleBusServiceTest {
     @Test
     fun shouldFindEarliestTimeStampFromExampleInput() {
         assertThat(
-                ShuttleBusService.readFrom("939" ,
+                ShuttleBusService.readFrom("939",
                         "7,13,x,x,59,x,31,19")
         ).isEqualToComparingFieldByFieldRecursively(
                 ShuttleBusService(939L, 7, 13, 59, 31, 19))
@@ -56,4 +57,25 @@ class ShuttleBusServiceTest {
 
     }
 
+
+    @TestFactory
+    fun shouldFindEarliestTimeStampThatMatchesWithTheBugsDeparturePosition() = listOf(
+            arrayOf("7", "13", "x", "x", "59", "x", "31", "19") to 1068781L,
+            arrayOf("17", "x", "13", "19") to 3417L,
+            arrayOf("67", "7", "59", "61") to 754018L,
+            arrayOf("67", "x", "7", "59", "61") to 779210L,
+            arrayOf("67", "7", "x", "59", "61") to 1261476L,
+            arrayOf("1789", "37", "47", "1889") to 1202161486L
+    )
+            .map { (busIds, expectedResult) ->
+                DynamicTest.dynamicTest("should computed to : $expectedResult") {
+                    assertThat(
+                            ShuttleBusServicePart02(*busIds).findEarliestTimeStampThatMatchesWithTheBusDeparturePosition()
+                    ).isEqualTo(expectedResult)
+                }
+
+            }
 }
+
+
+        
