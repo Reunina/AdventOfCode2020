@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>ShuttleBusService.kt</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.adventofcode.day13</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>class ShuttleBusService(private val actualTimeStamp: Long, private vararg val busIds: Int) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    companion object {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        fun readFrom(actualTimeStamp: String, busIds : String): ShuttleBusService {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            return ShuttleBusService(actualTimeStamp.toLong(), *busIds.split(&#39;,&#39;).filterNot { it ==&#34;x&#34; }.map { it.toInt() }.toIntArray() )</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    fun findEarliestDeparture(): Pair&#60;Int, Long&#62;? {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return busIds.map { it to foundNextTimeStamp(it) }.minBy { it.second }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_17'>4</a>
+<span>
+1. foundNextTimeStamp : Replaced long modulus with multiplication &rarr; KILLED<br/>
+2. foundNextTimeStamp : Replaced long subtraction with addition &rarr; KILLED<br/>
+3. foundNextTimeStamp : Replaced long addition with subtraction &rarr; KILLED<br/>
+4. foundNextTimeStamp : replaced long return with 0 for com/adventofcode/day13/ShuttleBusService::foundNextTimeStamp &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    private fun foundNextTimeStamp(it: Int) = actualTimeStamp - actualTimeStamp.rem(it) + it</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    fun  findEarliestIdByWaitingTime(): Long {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        val earliestDeparture = findEarliestDeparture()</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return earliestDeparture!!.first.times(  earliestDeparture.second- actualTimeStamp)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@7465cdb6_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7465cdb6_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>foundNextTimeStamp<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> Replaced long modulus with multiplication &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>foundNextTimeStamp<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> Replaced long subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>foundNextTimeStamp<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> Replaced long addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>foundNextTimeStamp<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> replaced long return with 0 for com/adventofcode/day13/ShuttleBusService::foundNextTimeStamp &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7465cdb6_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_27'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7465cdb6_31'>31</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_31'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7465cdb6_34'>34</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_34'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7465cdb6_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_37'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyTwoBus()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@7465cdb6_42'>42</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@7465cdb6_42'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findEarliestDeparture<br/><b>Killed by : </b>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()]</span></span> replaced return value with null for com/adventofcode/day13/ShuttleBusService::findEarliestDeparture &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>NULL_RETURN_VALUES</li>
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.adventofcode.day13.Day13KtTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.Day13KtTest]/[method:shouldFindExpectedResultWithGivenInputForPart01()] (1 ms)</li><li>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyTwoBus()] (1 ms)</li><li>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyOneBus()] (1 ms)</li><li>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithCompleteExample()] (1 ms)</li><li>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldFindEarliestTimeStampWithOnyThreeBus()] (1 ms)</li><li>com.adventofcode.day13.day13.ShuttleBusServiceTest.[engine:junit-jupiter]/[class:com.adventofcode.day13.day13.ShuttleBusServiceTest]/[method:shouldReturnWeirdCalculus()] (1 ms)</li><li>com.adventofcode.day01.EntryTest.[engine:junit-jupiter]/[class:com.adventofcode.day01.EntryTest]/[method:shouldFindTheContinuationCode()] (7 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.6.1
+
+</body>
+</html>
