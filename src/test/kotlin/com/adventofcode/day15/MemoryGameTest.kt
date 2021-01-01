@@ -45,4 +45,22 @@ internal class MemoryGameTest {
                     .isEqualTo(expectedSpokenNumber)
         }
     }
+    @TestFactory
+    fun shouldFoundThe30000000thSpokenNumber() = listOf(
+            listOf(0,3,6) to 175594,
+            listOf(1,3,2) to 2578,
+            listOf(2,1,3) to 3544142,
+            listOf(1,2,3) to 261214,
+            listOf(2,3,1) to 6895259,
+            listOf(3,2,1) to 18,
+            listOf(3,1,2) to 362
+    ).map { (startingNumbers, expectedSpokenNumber) ->
+        DynamicTest.dynamicTest("for ${startingNumbers} At the turn 30000000th the nummber spoke should be ${expectedSpokenNumber}") {
+            val memoryGame =MemoryGame(startingNumbers)
+            assertThat(memoryGame.spokeNumberAtTurn(30000000))
+                    .isEqualTo(expectedSpokenNumber)
+        }
+    }
 }
+
+
