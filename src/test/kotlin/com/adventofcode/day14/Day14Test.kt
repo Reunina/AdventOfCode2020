@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import java.io.File
 
 internal class Day14Test {
-
+/*
     @Test
     fun shouldFoundExpectedValueForPart01() {
         val input: List<String> =
@@ -28,4 +28,5 @@ internal class Day14Test {
         assertThat(memory).isEqualTo(4335927555692L)
 
     }
+    */
 }
