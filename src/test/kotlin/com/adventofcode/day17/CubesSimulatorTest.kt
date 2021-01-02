@@ -35,7 +35,7 @@ class CubesSimulatorTest {
 
 
     @TestFactory
-    fun shouldFoundSpokenNumberAccordingTOPreviousUsageOfTheNumber() = listOf(
+    fun shouldFoundActiveCubesAfterNthCycle() = listOf(
             0 to 5L,
             1 to 11L,
             2 to 21L,
@@ -45,6 +45,15 @@ class CubesSimulatorTest {
             assertThat(withSimpleInitialData.simulateCycles(n))
                     .isEqualTo(activeCubes)
         }
+    }
+
+    @Test
+    fun shouldFoundActiveCubesAfterNthCycleWhenWaries() {
+
+
+        assertThat(withSimpleInitialData.simulateCyclesOn4thDim(nbCycles = 6 ))
+                .isEqualTo(848)
+
     }
 
 
