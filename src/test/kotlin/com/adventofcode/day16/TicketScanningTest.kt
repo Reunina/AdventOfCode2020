@@ -32,6 +32,7 @@ class TicketScanningTest {
                 )
 
     }
+
     @Test
     fun shouldBeAbleToFoundErrorsInNearbyTickets() {
 
@@ -41,6 +42,62 @@ class TicketScanningTest {
 
     }
 
+    @Test
+    fun shouldFindPossibleFields(){
+        val notes = TicketScanning.fromInput(listOf(
+                "class: 0-1 or 4-19",
+                "row: 0-5 or 8-19",
+                "seat: 0-13 or 16-19",
+                "",
+                "your ticket:",
+                "11,12,13",
+                "",
+                "nearby tickets:",
+                "3,9,18",
+                "15,1,5",
+                "5,14,9")
+        )
+
+        assertThat(notes.findPossibleFields())
+                .hasSize(3)
+                .containsEntry(0 , listOf( listOf("row", "seat"), listOf("class", "row"), listOf("class", "row", "seat")))
+                .containsEntry(1 , listOf(listOf("class", "row", "seat"), listOf("class", "row", "seat"), listOf("class", "row")))
+                .containsEntry(2 , listOf(listOf("class", "row", "seat"), listOf("class", "row", "seat"),  listOf("class", "row", "seat")))
+
+    }
+
+
+
+    @Test
+    fun shouldFindWhichFieldIsWhich(){
+        val smallNotes = TicketScanning.fromInput(listOf(
+                "class: 0-1 or 4-19",
+                "row: 0-5 or 8-19",
+                "seat: 0-13 or 16-19",
+                "",
+                "your ticket:",
+                "11,12,13",
+                "",
+                "nearby tickets:",
+                "3,9,18",
+                "15,1,5",
+                "5,14,9")
+        )
+
+        assertThat(smallNotes.findWhichFieldIsWhich())
+                .hasSize(3)
+                .containsEntry(0 , "row")
+                .containsEntry(1 , "class")
+                .containsEntry(2 , "seat")
+
+
+        assertThat(notes.findWhichFieldIsWhich())
+                .hasSize(3)
+                .containsEntry(0 , "row")
+                .containsEntry(1 , "class")
+                .containsEntry(2 , "seat")
+
+    }
 
 
 }
