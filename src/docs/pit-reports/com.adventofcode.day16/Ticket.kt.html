@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Ticket.kt</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.adventofcode.day16</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>typealias Field = Int</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>class Ticket(internal vararg val fields: Field) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    fun findErrorsAccordingTo(validRanges: Collection&#60;ValidRanges&#62;): Collection&#60;Field&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_8'/>
+8
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_8'>1</a>
+<span>
+1. findErrorsAccordingTo : replaced return value with Collections.emptyList for com/adventofcode/day16/Ticket::findErrorsAccordingTo &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return listOf(fields.firstOrNull { field -&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_9'/>
+9
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_9'>3</a>
+<span>
+1. findErrorsAccordingTo : Changed increment from 1 to -1 &rarr; KILLED<br/>
+2. findErrorsAccordingTo : negated conditional &rarr; KILLED<br/>
+3. findErrorsAccordingTo : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            !validRanges.any { it.accept(field) }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_10'/>
+10
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_10'>1</a>
+<span>
+1. findErrorsAccordingTo : replaced return value with Collections.emptyList for com/adventofcode/day16/Ticket::findErrorsAccordingTo &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        } ?: return emptyList())</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    fun findValidAccordingTo(validRanges: Collection&#60;ValidRanges&#62;): Map&#60;Int, List&#60;String&#62;&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        return fields</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                .mapIndexed() { index, field -&#62;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    index to validRanges</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_17'>1</a>
+<span>
+1. findValidAccordingTo : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                            .filter {  it.accept(field) }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                .map { it.first to it.second.map { it.name }.toList() }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                .toMap()</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2486c31f_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_8'>8</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_8'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> replaced return value with Collections.emptyList for com/adventofcode/day16/Ticket::findErrorsAccordingTo &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_9'>9</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_9'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_10'>10</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_10'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>none</span></span> replaced return value with Collections.emptyList for com/adventofcode/day16/Ticket::findErrorsAccordingTo &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findValidAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFFindValidOnesAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_24'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_25'>25</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_25'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_26'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_27'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_28'>28</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_28'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findErrorsAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2486c31f_32'>32</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2486c31f_32'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>findValidAccordingTo<br/><b>Killed by : </b>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFFindValidOnesAccordingToValidRange()]</span></span> Changed increment from 1 to -1 &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>BOOLEAN_FALSE_RETURN</li>
+<li class='mutator'>BOOLEAN_TRUE_RETURN</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+<li class='mutator'>EMPTY_RETURN_VALUES</li>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>NULL_RETURN_VALUES</li>
+<li class='mutator'>PRIMITIVE_RETURN_VALS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.adventofcode.day16.TicketScanningTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketScanningTest]/[method:shouldFindPossibleFields()] (2 ms)</li><li>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFindErrorsAccordingToValidRange()] (1 ms)</li><li>com.adventofcode.day16.TicketScanningTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketScanningTest]/[method:shouldBeAbleToFoundErrorsInNearbyTickets()] (3 ms)</li><li>com.adventofcode.day16.TicketTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketTest]/[method:shouldFFindValidOnesAccordingToValidRange()] (1 ms)</li><li>com.adventofcode.day16.TicketScanningTest.[engine:junit-jupiter]/[class:com.adventofcode.day16.TicketScanningTest]/[method:shouldFindWhichFieldIsWhich()] (1 ms)</li><li>com.adventofcode.day01.EntryTest.[engine:junit-jupiter]/[class:com.adventofcode.day01.EntryTest]/[method:shouldFindTheContinuationCode()] (11 ms)</li><li>com.adventofcode.day16.Day16Test.[engine:junit-jupiter]/[class:com.adventofcode.day16.Day16Test]/[method:shouldBeAbleToFoundExpectedValueForPart02()] (76 ms)</li><li>com.adventofcode.day16.Day16Test.[engine:junit-jupiter]/[class:com.adventofcode.day16.Day16Test]/[method:shouldBeAbleToFoundExpectedValueForPart01()] (17 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.6.1
+
+</body>
+</html>
