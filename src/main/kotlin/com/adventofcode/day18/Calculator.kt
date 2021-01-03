@@ -4,23 +4,26 @@ class Calculator(private val expressions: List<String>) {
     constructor(expression: String) : this(listOf(expression))
 
 
-    fun evaluate( ): Long {
+    fun evaluate(): Long {
         return expressions.map {
             evaluate(it)
         }.sum()
 
     }
 
-    fun evaluate(expression : String ): Long {
+    private fun evaluate(expression: String): Long {
+        val reducedExpression = reduceParenthesis(expression)
+        return executeSimply(reducedExpression)
+    }
+
+    private fun reduceParenthesis(expression: String): String {
         var reducedExpression = expression
         while (reducedExpression.contains("(")) { // soppose that expression is well formed then Nb of ( == nb of )
-
             val inParenthesisExpression = reducedExpression.substringAfterLast("(").substringBefore(")")
             val inParenthesisResult = executeSimply(inParenthesisExpression).toString()
-
-            reducedExpression =reducedExpression.replace("($inParenthesisExpression)", inParenthesisResult)
+            reducedExpression = reducedExpression.replace("($inParenthesisExpression)", inParenthesisResult)
         }
-        return executeSimply(reducedExpression)
+        return reducedExpression
     }
 
     private fun executeSimply(data: String): Long {
@@ -41,4 +44,39 @@ class Calculator(private val expressions: List<String>) {
         return (m1 * m2)
     }
 
+    fun evaluateWithPrecedence(): Long {
+        return expressions.map {
+            evaluateExpressionWithPrecedence(it)
+        }.sum()
+
+    }
+
+    private fun evaluateExpressionWithPrecedence(expression: String): Long {
+        val toto = reduceParenthesisv2(expression)
+        val reducedExpression = reduceAddition(toto)
+        if (reducedExpression.contains(" ")) return executeSimply(reducedExpression)
+        return reducedExpression.toLong()
+    }
+
+    private fun reduceParenthesisv2(expression: String): String {
+        var reducedExpression = expression
+        while (reducedExpression.contains("(")) { // soppose that expression is well formed then Nb of ( == nb of )
+            val inParenthesisExpression = reducedExpression.substringAfterLast("(").substringBefore(")")
+            val inParenthesisResult = evaluateExpressionWithPrecedence(inParenthesisExpression).toString()
+            reducedExpression = reducedExpression.replace("($inParenthesisExpression)", inParenthesisResult)
+        }
+        return reducedExpression
+    }
+
+    private fun reduceAddition(expression: String): String {
+        var reducedExpression = expression
+        while (reducedExpression.contains("+")) {
+            val data = reducedExpression.split(" ")
+            val index = data.indexOfFirst { it == "+" }
+            val addition = data.subList(index - 1, index + 2).joinToString(" ")
+            val additionResult = executeSimply(addition).toString()
+            reducedExpression = data.subList(0, index - 1).plus(additionResult).plus(data.subList(index + 2, data.size)).joinToString(" ")
+        }
+        return reducedExpression
+    }
 }
