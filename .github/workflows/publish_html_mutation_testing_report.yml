@@ -20,8 +20,8 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "mutation testing results" > report.md
           # Add results
           cat src/docs/pit-reports/index.html >> report.md
+          grep -v "^$" report.md > clean_report.md
           # Send report
-          cml-send-comment report.md
+          cml-send-comment clean_report.md
