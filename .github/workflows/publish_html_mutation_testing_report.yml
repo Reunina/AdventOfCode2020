@@ -1,0 +1,27 @@
+name: Mutation testing and publish html
+on: [ push ]
+jobs:
+  run:
+    runs-on: [ ubuntu-latest ]
+    container: docker://dvcorg/cml:latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+
+      #Publish mutation tests reports
+      - name: Publish mutation testing results as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mutation_testing_results
+          path: src/docs/pit-reports/
+
+      - name: Publish mutation testing results as PR check comment
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Add results
+          cat src/docs/pit-reports/index.html >> report.md
+          grep -v "^$" report.md > clean_report.md
+          # Send report
+          cml-send-comment clean_report.md
