@@ -8,15 +8,6 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Build with maven
-        run: mvn clean install -DskipTests
-
-      # Run all unit tests
-      - name: Run tests with maven
-        run: mvn test
-      # Runs a single command using the runners shell
-      - name: Run pitest with maven
-        run: mvn org.pitest:pitest-maven:mutationCoverage
 
       #Publish mutation tests reports
       - name: Publish mutation testing results as artifact
